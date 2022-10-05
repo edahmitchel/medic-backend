@@ -3,7 +3,7 @@ import path from "path"
 import express from "express"
 
 import rootRoute from "./routes/root.route"
-
+import { errHandler } from "./middleware/errorHandler"
 
 export const app = express()
 
@@ -26,3 +26,6 @@ app.all('*', (req, res) => { // send 404
         res.type('txt').send('404 Not Found')
     }
 })
+
+// error handling middleware
+app.use(errHandler)
